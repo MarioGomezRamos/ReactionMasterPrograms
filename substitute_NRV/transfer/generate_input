@@ -1,0 +1,24 @@
+#!/bin/bash
+
+ rm *.fres 2>/dev/null
+ rm *.pots 2>/dev/null
+
+ echo "Make sure you have run 'initialize' before running"
+ echo "To start fully anew remove ans.in file"
+
+ if [ -f "ans.in" ]; then
+  ../fres/source/brush13 <ans.in
+else
+../fres/source/brush13 
+ fi
+
+ cp  *.brin ans.in 2>/dev/null
+
+ rm *.tran 2>/dev/null
+ rm *.brin 2>/dev/null
+ rm fort.35 2>/dev/null
+
+echo "To start fully anew remove ans.in file"
+
+##############
+

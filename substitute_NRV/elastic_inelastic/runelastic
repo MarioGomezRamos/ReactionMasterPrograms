@@ -1,0 +1,33 @@
+
+echo "Run by inputting filename './runelastic filename'"
+echo "Make sure you have run 'initialize' before running"
+
+ [ -f "tmp.in" ] && rm tmp.in
+ [ -f "elasticxs.dat" ] && rm elasticxs.dat
+ [ -f "inelastic1xs.dat" ] && rm inelastic1xs.dat
+ [ -f "inelastic2xs.dat" ] && rm inelastic2xs.dat
+ [ -f "smat.out" ] && rm smat.out
+
+
+../fres/source/cdc4fMGR < $1 >tmp.in
+nohup ../fres/source/fresco < tmp.in > fresco.out
+#echo -n Fresco execution ended 
+
+awk <fort.7 '{print $3, sqrt($2**2+$1**2)}' >smat.out 2> /dev/null
+
+mv fort.201 elasticxs.dat 2> /dev/null
+if [ -f "fort.202" ]; then
+   mv fort.202 inelastic1xs.dat
+fi
+if [ -f "fort.203" ]; then
+   mv fort.203 inelastic2xs.dat
+fi
+
+
+rm fort.?? 2> /dev/null
+rm fort.? 2> /dev/null
+
+exit
+
+##############
+

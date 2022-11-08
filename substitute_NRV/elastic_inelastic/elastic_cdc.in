@@ -1,0 +1,56 @@
+Inelastic Input
+ &CDCC
+   ELAB=44
+   hcm=0.05  rmatch=80   
+   jbord=200
+   thmin=0 thmax=180 thinc=0.5/
+
+
+ &NUCLEUS part='Proj'   name='16O' charge=8 mass=16.0000  spin=0 parity=1 /
+ &NUCLEUS part='Target'    name='64Zn'  charge=30 mass=64.0000  spin=0.0 parity=+1 nte=1 /
+ &TARGSTATES  spin=2.0 parity=+1 ex=0.992/
+ &NUCLEUS/
+ &BIN /
+  &POTENTIAL part='Proj' a1=64 a2=16 rc=1.25 v=45.69 vr0=1.25 a=0.559 w=12.09 wr0=1.25 aw=0.563 beta2=0.25 beta2c=0.22 /
+&POTENTIAL/
+
+# ------------------------------------------ END OF INPUT --------------------------
+
+# ELAB: Energy of projectile in laboratory system (MeV)
+# hcm: step of integration, keep at 0.1 fm or 0.05 at higher energies (fm)
+# rmatch: maximum radius of integration, keep larger than R_grazing rmatch>3R_grazing (fm)
+# jbord: maximum value of angular momentum, keep large than L_grazing jbord>2k_cm R_grazing (hbar)
+# thmin: minimum angle for representation (deg)
+# thmax: maximum angle for representation (deg), set to negative to get cross section instead of ratio to Rutherford
+# thinc: step in angle for representation (deg)
+
+#NUCLEUS
+# name: name of particle (irrelevant for calculation)
+# charge: atomic number of particle
+# mass: mass number of particle
+# spin: spin of ground state 
+# parity: parity of ground state (+1 or -1)
+# nte: (only for target) number of excited states of the target
+
+#TARGSTATES (include as many lines as the value of nte)
+# spin: spin of excited state 
+# parity: parity of excited state (+1 or -1)
+# ex: excitation energy of excited state
+
+#POTENTIAL
+# a1: mass of target
+# a2: mass of projectile (if formula for potential is R=r0*A_t^(1/3) set a2=0)
+# rc: reduced Coulomb radius
+# v: depth of real volume optical potential
+# vr0: reduced radius for real volume optical potential
+# a: diffusivity of real volume optical potential
+# w: depth of imaginary volume optical potential
+# wr0: reduced radius for imaginary volume optical potential
+# aw: diffusivity of imaginary volume optical potential
+# wd: depth of imaginary surface optical potential
+# wdr0: reduced radius for imaginary surface optical potential
+# awd: diffusivity of imaginary surface optical potential
+# beta2: beta for l=2 excitation
+# beta3: beta for l=3 excitation
+# beta2c: Coulomb beta for l=2 excitation
+# beta3c: Coulomb beta for l=3 excitation

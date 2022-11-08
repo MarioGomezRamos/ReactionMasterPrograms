@@ -1,0 +1,4 @@
+#setenv FRESCOLIB ~/bin
+setenv FRESCOLIB ~/bin/`arch`
+set path=($path $FRESCOLIB)
+alias run	'chmod +x \!* ; nohup \!* >& \!*.out &'

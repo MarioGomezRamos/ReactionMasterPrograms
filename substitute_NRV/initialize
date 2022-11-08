@@ -1,0 +1,15 @@
+#!/bin/bash
+
+cd fres/source/.
+echo $pwd
+
+ if [ -f "fresco" ]; then
+  echo "Fresco installed"
+ else
+   make
+ fi
+
+exit
+
+##############
+
